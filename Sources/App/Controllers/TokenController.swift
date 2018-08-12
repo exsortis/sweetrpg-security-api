@@ -1,5 +1,5 @@
 import Vapor
-import SweetRPGSecurityModel
+import SecurityModel
 
 
 /// Creates new users and logs them in.

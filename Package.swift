@@ -11,16 +11,16 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-mysql.git", from: "3.0.0"),
 
         // 👤 Authentication and Authorization layer for Fluent.
-        // .package(url: "https://github.com/vapor/auth.git", from: "2.0.0"),
+        .package(url: "https://github.com/vapor/auth.git", from: "2.0.0"),
 
         // JSON-API
-//        .package(url: "https://github.com/vapor-tools/vapor-jsonapi.git", .branch("master"))
+    //    .package(url: "https://github.com/vapor-tools/vapor-jsonapi.git", .branch("master")),
 
         // Model
-        .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-security-model.git", .branch("develop"))
+        .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-security-model.git", .branch("develop")),
     ],
     targets: [
-        .target(name: "App", dependencies: ["FluentMySQL", "Vapor", "SweetRPGSecurityModel"]),
+        .target(name: "App", dependencies: ["FluentMySQL", "Vapor", "SecurityModel", "Authentication"]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: ["App"])
     ]
