@@ -20,7 +20,7 @@ let package = Package(
         .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-security-model.git", .branch("develop"))
     ],
     targets: [
-        .target(name: "App", dependencies: ["Authentication", "FluentMySQL", "Vapor", "SweetRPGSecurityModel"]),
+        .target(name: "App", dependencies: ["FluentMySQL", "Vapor", "SweetRPGSecurityModel"]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: ["App"])
     ]
