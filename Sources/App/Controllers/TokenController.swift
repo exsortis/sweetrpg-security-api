@@ -8,7 +8,7 @@ func boot(router : Router) throws {
 
 }
 
-func loginHandler(_ req : Request) throws -> Future<Token> {
+// func loginHandler(_ req : Request) throws -> Future<Token> {
 
-}
+// }
 }
