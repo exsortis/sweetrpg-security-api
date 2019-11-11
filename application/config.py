@@ -4,6 +4,7 @@ config.py
 - settings for the flask application object
 """
 
+
 import os
 
 
@@ -20,3 +21,6 @@ class BaseConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # used for encryption and session management
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'seekrat'
+    CACHE_REDIS_HOST = os.environ['REDIS_HOST']
+    CACHE_REDIS_PORT = int(os.environ.get('REDIS_PORT') or 6379)
+    CACHE_REDIS_DB = int(os.environ.get('REDIS_DB') or 86)

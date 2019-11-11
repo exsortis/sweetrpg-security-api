@@ -6,13 +6,14 @@ main.py
 
 from flask import Flask
 from flask_cors import CORS
-# from flask_dotenv import DotEnv
+from application.cache import cache
 
 
-def create_app(app_name='sweetrpg-users'):
+def create_app(app_name="sweetrpg-users"):
     app = Flask(app_name)
-    app.config.from_object('application.config.BaseConfig')
+    app.config.from_object("application.config.BaseConfig")
     # env = DotEnv(app)
+    cache.init_app(app)
 
     cors = CORS(app, resources={r"/users/*": {"origins": "*"}})
 
