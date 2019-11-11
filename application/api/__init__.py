@@ -11,7 +11,6 @@ from ..models.user import User
 
 
 blueprint = Blueprint("users", __name__)
-print("loaded: ", blueprint)
 
 
 def token_required(f):

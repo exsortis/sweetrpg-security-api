@@ -17,7 +17,6 @@ def create_app(app_name='sweetrpg-users'):
     cors = CORS(app, resources={r"/users/*": {"origins": "*"}})
 
     from application.api import blueprint, login, register
-    print("blueprint:", blueprint)
     app.register_blueprint(blueprint, url_prefix="/users")
 
     from application.db import db
