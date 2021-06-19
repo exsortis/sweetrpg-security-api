@@ -69,3 +69,4 @@ fastlane/test_output
 # Miscellaneous
 .DS_Store
 *.xcodeproj
+Package.resolved
