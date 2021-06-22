@@ -13,7 +13,7 @@ import Common
 public func configure(_ app : Application) throws {
     app.logger.logLevel = app.environment == .development ? .debug : .info
 
-    app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+//    app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     app.middleware.use(app.sessions.middleware)
     app.middleware.use(LogRequestMiddleware())
 

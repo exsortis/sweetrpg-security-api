@@ -6,6 +6,7 @@
 import Fluent
 import Foundation
 import Vapor
+import ProfilesModel
 
 
 struct SeedDatabase : Migration {

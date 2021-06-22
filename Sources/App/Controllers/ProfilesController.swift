@@ -6,6 +6,7 @@
 import Fluent
 // import JWT
 import Vapor
+import ProfilesModel
 
 
 struct ProfilesController : RouteCollection {
