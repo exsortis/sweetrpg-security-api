@@ -8,6 +8,8 @@ import Fluent
 
 public func migrations(_ app : Application) throws {
      app.migrations.add(CreateUserTable())
+     app.migrations.add(CreateLoginProfileTable())
+     app.migrations.add(CreateSettingsItemTable())
     // app.migrations.add(CreateTokenTable())
      app.migrations.add(SeedDatabase())
     // app.migrations.add(AddTwitterHandle())

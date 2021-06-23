@@ -24,9 +24,15 @@ struct SeedDatabase : Migration {
 //        }
 
 //        let user = User(name: "Admin", username: "admin", /*password: passwordHash, */ email: "admin@localhost.local")
-        let user = User(name: "Admin", username: "paulyhedral", thirdPartyAuth: "github", thirdPartyAuthId: "paulyhedral", email: "paul@schifferers.net")
+        let user = User(name: "Admin", email: "paul@schifferers.net")
+
+        // username: "paulyhedral", thirdPartyAuth: "github", thirdPartyAuthId: "paulyhedral",
         // TODO: create admin role and link to user
         return user.save(on: database)
+//                   .flatMap { user in
+//                       let profile = LoginProfile(thirdPartyAuth: "github", thirdPartyAuthId: "paulyhedral", username: "paulyhedral",  userId: try! user.requireID())
+//                       return profile.save(on: database)
+//                   }
     }
 
     func revert(on database : Database) -> EventLoopFuture<Void> {

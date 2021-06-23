@@ -8,6 +8,7 @@ import FluentMongoDriver
 import Vapor
 import Redis
 import Common
+import ServiceDiscovery
 
 
 public func configure(_ app : Application) throws {
@@ -36,4 +37,20 @@ public func configure(_ app : Application) throws {
 
 //    app.sendgrid.initialize()
     try app.autoMigrate().wait()
+
+    // register with service discovery
+    guard let serviceDiscoveryUrlString = Environment.get("SERVICE_DISCOVERY_URL"),
+          let serviceDiscoveryUrl = URL(string: serviceDiscoveryUrlString) else {
+        fatalError("SERVICE_DISCOVERY_URL missing or invalid")
+    }
+    app.logger.debug("SERVICE_DISCOVERY_URL: \(serviceDiscoveryUrl.absoluteString)")
+    let sdConfig = ConsulServiceDiscovery<String, ConsulServiceDefinition>.Configuration(url: serviceDiscoveryUrl)
+    let thisInstance = ConsulServiceDefinition(id: Constants.serviceName,
+            name: app.http.server.configuration.hostname,
+            port: app.http.server.configuration.port,
+            check: ConsulServiceDefinition.Check(name: "ping check",
+                    args: ["ping", "-c1", app.http.server.configuration.hostname],
+                    interval: "30s",
+                    status: "passing"))
+    ConsulServiceDiscovery(configuration: sdConfig).register(Constants.serviceName, instances: [thisInstance])
 }

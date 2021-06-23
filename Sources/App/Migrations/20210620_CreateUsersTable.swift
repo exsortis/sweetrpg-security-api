@@ -15,11 +15,7 @@ struct CreateUserTable : Migration {
                 .field(User.v20210620.updatedAt, .datetime, .required)
                 .field(User.v20210620.deletedAt, .datetime)
                 .field(User.v20210620.name, .string, .required)
-                .field(User.v20210620.username, .string, .required)
-                .field(User.v20210620.thirdPartyAuth, .string)
-                .field(User.v20210620.thirdPartyAuthId, .string)
                 .field(User.v20210620.email, .string, .required)
-                .unique(on: User.v20210620.username)
                 .unique(on: User.v20210620.email)
                 .create()
     }
