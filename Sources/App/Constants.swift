@@ -12,4 +12,5 @@ struct Constants {
     static let oauthLoginDataKey = "oauth_login"
     static let iosLoginType = "ios"
     static let serviceName = "profiles-api"
+    static let serviceIdBase = "profiles-api-"
 }
